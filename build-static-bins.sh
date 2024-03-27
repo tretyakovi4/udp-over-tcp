@@ -7,9 +7,11 @@
 # On Fedora/RHEL that's: glibc-static.
 # On Debian/Ubuntu that's: libc6-dev.
 
+ARCH=$(uname -m)
+
 RUSTFLAGS="-C target-feature=+crt-static" \
     cargo build --release \
-    --target aarch64-unknown-linux-gnu \
+    --target $ARCH-unknown-linux-gnu \
     --features env_logger \
     --features clap \
     --features statsd \
